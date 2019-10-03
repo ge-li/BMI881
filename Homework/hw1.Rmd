@@ -44,6 +44,8 @@ ggplot(data = stroke, mapping = aes(x = year, y = mortality_rate, color = income
 
 * The higher the income, the lower the mortality rate.
 
+* The mortality rate decrease over the years.
+
 ## Code
 
 ```{r ref.label = knitr::all_labels(), echo = TRUE, eval = FALSE}
