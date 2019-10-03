@@ -2,7 +2,7 @@
 title: "BMI 881 Homework 1"
 author: "Li Ge"
 date: "`r Sys.Date()`"
-output: html_document
+output: pdf_document
 urlcolor: blue
 ---
 
