@@ -55,4 +55,4 @@ ggplot(data = stroke, mapping = aes(x = year, y = mortality_rate, color = income
 
 ```{r ref.label = knitr::all_labels(), echo = TRUE, eval = FALSE}
 # this R markdown chunk generates a code appendix
-```
+  ```
