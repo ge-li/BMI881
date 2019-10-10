@@ -22,7 +22,7 @@ This is the [link](https://kbroman.org/BMI881/homework1.html) to the homework.
 
 * I was originally planning to design a facet_grid with *income_group v. age_group*, each subplot is the *mortality v. year*. But then I realized it would be difficult to compare the mortality rate between different income groups. So I decided to use color to indicate different income groups. And it was so much better.
 
-* Another thing worth to mention is that I log-scaled the y-axis. Because the mortality rates are drastically different between *>=75 v. rest*. 
+* Because the mortality rates are drastically different between *>=75 v. rest*. I made 2 figures. For the first one, I used different y-axis for each subplot, which makes the range more obvious. I log-scaled the y-axis for the second graph for easier comparison across all age groups.
 
 ```{r}
 library(ggplot2)
@@ -31,9 +31,14 @@ stroke <- read.csv("https://kbroman.org/BMI881/assets/feigin2014_table1_mortalit
 
 # plot
 ggplot(data = stroke, mapping = aes(x = year, y = mortality_rate, color = income_group)) + 
-  facet_grid(. ~ age_group) + 
+  facet_wrap(. ~ age_group, scale = "free_y") + 
+  geom_pointrange(aes(ymin = interval_low, ymax = interval_high), alpha = 0.5) + 
+  geom_line()
+
+ggplot(data = stroke, mapping = aes(x = year, y = mortality_rate, color = income_group)) + 
+  facet_wrap(. ~ age_group) + 
   scale_y_log10() +
-  geom_pointrange(aes(ymin = interval_low, ymax = interval_high, alpha = 0.5)) + 
+  geom_pointrange(aes(ymin = interval_low, ymax = interval_high), alpha = 0.5) + 
   geom_line()
 
 ```
@@ -44,7 +49,7 @@ ggplot(data = stroke, mapping = aes(x = year, y = mortality_rate, color = income
 
 * The higher the income, the lower the mortality rate.
 
-* The mortality rate decrease over the years.
+* The mortality rate decreased over the years.
 
 ## Code
 
