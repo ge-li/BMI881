@@ -5,3 +5,6 @@ Repo for [BMI 881 (Biomedical data science scholarly literature)](https://kbroma
 
 Written article summaries
 
+### Homework
+
+Homework
