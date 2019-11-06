@@ -1,0 +1,83 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{diagbox}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\urlstyle{same}
+
+\usepackage[left=2.00cm, right=2.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+\title{BMI 881 Homework 2}
+\author{Li Ge}
+\begin{document}
+	\maketitle
+	This is the \href{https://kbroman.org/BMI881/homework2.html}{link} to the homework.
+	
+\section*{Homework}
+This is in relation to the paper on predicting nonmelanoma skin cancer, \href{https://doi.org/10.1001/jamadermatol.2019.2335}{Wang et al. (2019)}. 
+
+\begin{enumerate}
+ 	\item If a test has sensitivity = 80\% and specificity 80\% and the prevalence of the disease is 9/100,000, what is the positive predictive value (aka "precision") of the test?
+
+	Answer: 0.036\%. (See appendix for details)
+
+	\item Suppose sensitivity = specificity. What would they have to be to achieve positive predictive value = 50\% when prevalence is 9/100,000?
+
+	Answer: 99.991\% (See appendix for details)
+
+	\item Comment on these results in relation to the precision values provided in Table 2 of \href{https://doi.org/10.1001/jamadermatol.2019.2335}{Wang et al. (2019)}.
+
+	In the study, a total of 1829 patients with nonmelanoma skin cancer (NMSC) as their first diagnosed cancer and 7665 random controls without cancer were included in the analysis. Their best reported $Sn = 83.1\%, Sp = 82.3\%, Precision = 57.1\%$.
+	
+	However, the NMSC incidence among Asian individuals is 2.3 to 9.2 per 100,000 population. If we apply their methods to the real data, the precision will be strikingly low like the case in question 1. The conclusion is that their study design didn't reflect the real prevalence of the disease. Thus, the reported precision is not at all reliable. The proposed method is questionable at the best since the results are based on fictional dataset.
+ 	
+\end{enumerate}
+	
+\section*{Appendix}
+\begin{table}[h]
+	\centering
+	\caption{Confusion Matrix}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\diagbox{Prediction}{Truth} & Positive  & Negative      & Sum                   \\ \hline
+		Positive                        & $np \times Sn$     & $n(1-p) \times (1-Sp)$ & $np \times Sn + n(1-p) \times (1-Sp)$ \\ \hline
+		Negative                        & $np \times (1-Sn)$ & $n(1-p) \times Sp$     & $np \times (1-Sn) + n(1-p) \times Sp$ \\ \hline
+		Sum                             & $np$        & $n(1-p)$        & $np$                    \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{itemize}
+	\item $n$: \# of samples
+	\item $p$: prevalence rate
+	\item $Sn$: sensitivity 
+	\item $Sp$: specificity 
+\end{itemize}
+
+\begin{align*}
+Precision &= \dfrac{TP}{TP + FP} = \dfrac{np \times Sn}{np \times Sn + n(1-p) \times (1 - Sp)} \\
+&= \dfrac{p \times Sn}{p \times Sn + (1-p) \times (1-Sp)}
+\end{align*}
+
+\begin{enumerate}
+	\item Solve question 1 by plugging in $p=0.00009, Sn = Sp = 0.8$. 
+	\item Solve question 2 by solving 
+	\begin{align*}
+	Precision &= 0.5 \\
+	p &= 0.0009 \\
+	Sn &= Sp
+	\end{align*}
+\end{enumerate}
+
+
+
+\end{document}
